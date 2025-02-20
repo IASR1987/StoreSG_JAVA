@@ -98,4 +98,7 @@ public class User {
         this.tipe = tipe;
     }
 
+    // Constructor sin argumentos
+    public User() {}
+
 }

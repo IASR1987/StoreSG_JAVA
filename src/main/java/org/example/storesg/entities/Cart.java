@@ -1,13 +1,15 @@
 package org.example.storesg.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.util.Optional;
+import java.math.BigDecimal;
+
 
 @Entity
 public class Cart {
@@ -32,13 +34,18 @@ public class Cart {
     @Column(name = "Quantity", nullable = false)
     private Integer quantity;
 
-    public Cart(Integer userId, Integer productId, Integer quantity) {
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    }
+    @Column(name = "imgSrc", nullable = false)
+    private String imgSrc;
+
+    @Column(name = "price", nullable = false)
+    private BigDecimal price;
+
+
+
     public Cart() {
-    }
-
-    public Cart(Integer userId, Optional<Products> byId, Integer quantity) {
     }
 
     public Integer getId() {
@@ -71,6 +78,30 @@ public class Cart {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+
+    public String getImgSrc() {
+        return imgSrc;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
 }
